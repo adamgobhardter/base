@@ -7,13 +7,12 @@ import static org.mockito.Mockito.*;
 
 public class TrainSensorTest {
 
-    @Before
-    public void before() {
-        // TODO Add initializations
-    }
+	
+	@Before
+	public void before() {
+	}
 
     @Test
-    public void ThisIsAnExampleTestStub() {
-        // TODO Delete this and add test cases based on the issues
+    public void tachoGraphTest() {
     }
 }
