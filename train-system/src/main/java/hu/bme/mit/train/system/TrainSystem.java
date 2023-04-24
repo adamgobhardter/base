@@ -14,7 +14,8 @@ public class TrainSystem {
 	private TrainSensor sensor = new TrainSensorImpl(controller, user);
 
 	public TrainSystem(){
-		Thread t = new Thread()
+		try {
+			Thread t = new Thread()
 		{
     		public void run(){
 				controller.followSpeed();
@@ -22,6 +23,10 @@ public class TrainSystem {
 			}
 		};
 		t.start();
+		} catch (Exception e) {
+			//TODO: handle exception
+		}
+		
 	}	
 	public TrainController getController() {
 		return controller;
