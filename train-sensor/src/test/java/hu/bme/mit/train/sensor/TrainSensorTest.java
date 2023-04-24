@@ -7,12 +7,40 @@ import static org.mockito.Mockito.*;
 
 public class TrainSensorTest {
 
+	TrainController controller;
+	TrainSensor sensor;
+	TrainUser user;
 	
 	@Before
 	public void before() {
+		TrainSystem system = new TrainSystem();
+		controller = system.getController();
+		sensor = system.getSensor();
+		user = system.getUser();
+
+		sensor.overrideSpeedLimit(50);
 	}
 
     @Test
-    public void tachoGraphTest() {
+    public void SpeedLimitSmallerThanZero() {
+        sensor.overrideSpeedLimit(-2);
+        Assert.assertTrue(user.getAlarmState()); 
+    }
+
+    @Test
+    public void SpeedLimitBiggerThan500() {
+        sensor.overrideSpeedLimit(505);
+        Assert.assertTrue(user.getAlarmState()); 
+    }
+    @Test
+    public void SpeedLimitBiggerThan500SmallerThanZero() {
+        sensor.overrideSpeedLimit(250);
+        Assert.assertFalse(user.getAlarmState()); 
+    }
+    @Test
+    public void SpeedLimitSmallerThan50Percentage() {
+        controller.setSpeedLimit(400); 
+        sensor.overrideSpeedLimit(150);
+        Assert.assertTrue(user.getAlarmState()); 
     }
 }
