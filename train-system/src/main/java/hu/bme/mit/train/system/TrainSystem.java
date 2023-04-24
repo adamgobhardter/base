@@ -29,7 +29,7 @@ public class TrainSystem {
 		}; 
 
 		timer = new Timer("Timer");
-		timer.schedule(task, 1000L); 
+		timer.schedule(task, 2000L); 
 	} 
 
 	public TrainController getController() {
