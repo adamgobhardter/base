@@ -4,23 +4,25 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
-import hu.bme.mit.train.interfaces.TrainController;
-import hu.bme.mit.train.interfaces.TrainSensor;
-import hu.bme.mit.train.interfaces.TrainUser;
-import hu.bme.mit.train.system.TrainSystem;
-public class TrainSensorTest {
+import hu.bme.mit.train.controller.TrainControllerImpl;
+import hu.bme.mit.train.sensor.TrainSensorImpl;
+import hu.bme.mit.train.user.TrainUserImpl;
 
-	TrainController controller;
-	TrainSensor sensor;
-	TrainUser user;
+
+public class TrainSensorTest {
+    @Mock 
+	TrainControllerImpl controller;
+	
+
+    TrainSensor sensor;
+	
+    @InjectMocks
+    TrainUserImpl user;
 	
 	@Before
 	public void before() {
-		TrainSystem system = new TrainSystem();
-		controller = system.getController();
-		sensor = system.getSensor();
-		user = system.getUser();
-
+		user = new TrainUserImpl(controller); 
+        sensor = new TrainSensorImpl(controller, user);
 		sensor.overrideSpeedLimit(50);
 	}
 
