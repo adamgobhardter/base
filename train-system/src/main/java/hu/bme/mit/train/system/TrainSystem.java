@@ -13,6 +13,22 @@ public class TrainSystem {
 	private TrainUser user = new TrainUserImpl(controller);
 	private TrainSensor sensor = new TrainSensorImpl(controller, user);
 
+	private TimerTask task;
+	private Timer timer; 
+
+	public TrainSystem {
+		
+		task = new TimerTask(){
+
+			public void run() {
+				followSpeed(); 
+			} 
+		}
+
+		timer = new Timer("Timer");
+		timer.schedule(task, 1000L); 
+	} 
+
 	public TrainController getController() {
 		return controller;
 	}
@@ -24,5 +40,7 @@ public class TrainSystem {
 	public TrainUser getUser() {
 		return user;
 	}
+
+
 
 }
