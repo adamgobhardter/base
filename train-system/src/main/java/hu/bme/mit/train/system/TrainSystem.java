@@ -24,7 +24,7 @@ public class TrainSystem {
 		task = new TimerTask(){
 
 			public void run() {
-				followSpeed(); 
+				controller.followSpeed(); 
 			} 
 		}; 
 
