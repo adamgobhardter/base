@@ -19,7 +19,7 @@ public class TrainSystem {
     		public void run(){
 				controller.followSpeed();
 				try {
-					Thread.sleep(100);
+					Thread.sleep(10);
 				} catch (Exception e) {
 					//TODO: handle exception
 				}
