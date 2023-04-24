@@ -14,8 +14,14 @@ public class TrainSystem {
 	private TrainSensor sensor = new TrainSensorImpl(controller, user);
 
 	public TrainSystem(){
-		Thread th = new Thread(run());
-		th.start(); 
+		Thread t = new Thread()
+		{
+    		public void run(){
+				controller.followSpeed();
+				Thread.sleep(100);
+			}
+		};
+		t.start();
 	}	
 	public TrainController getController() {
 		return controller;
@@ -28,8 +34,5 @@ public class TrainSystem {
 	public TrainUser getUser() {
 		return user;
 	}
-	public void run(){
-		controller.followSpeed();
-		Thread.sleep(100);
-	};
+	
 }
