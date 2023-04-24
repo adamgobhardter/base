@@ -30,23 +30,23 @@ public class TrainSensorTest {
     @Test
     public void SpeedLimitSmallerThanZero() {
         sensor.overrideSpeedLimit(-2);
-        verify(user, times(1)).setAlarmState("true");
+        verify(user, times(1)).setAlarmState(true);
         }
 
     @Test
     public void SpeedLimitBiggerThan500() {
         sensor.overrideSpeedLimit(505);
-        verify(user, times(1)).setAlarmState("true");
+        verify(user, times(1)).setAlarmState(true);
         }
     @Test
     public void SpeedLimitBiggerThan500SmallerThanZero() {
         sensor.overrideSpeedLimit(250);
-        verify(user, times(0)).setAlarmState("true");
+        verify(user, times(0)).setAlarmState(true);
         }
     @Test
     public void SpeedLimitSmallerThan50Percentage() {
         when(controller.getReferenceSpeed()).thenReturn(400); 
         sensor.overrideSpeedLimit(150);
-        verify(user, times(1)).setAlarmState("true"); 
+        verify(user, times(1)).setAlarmState(true); 
     }
 }
