@@ -16,14 +16,14 @@ public class TrainSystem {
 	private TimerTask task;
 	private Timer timer; 
 
-	public TrainSystem {
+	public TrainSystem() {
 		
 		task = new TimerTask(){
 
 			public void run() {
 				followSpeed(); 
 			} 
-		}
+		}; 
 
 		timer = new Timer("Timer");
 		timer.schedule(task, 1000L); 
