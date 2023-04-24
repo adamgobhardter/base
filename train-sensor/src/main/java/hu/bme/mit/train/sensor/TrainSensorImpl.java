@@ -1,4 +1,4 @@
-package hu.bme.mit.train.sensor;
+ package hu.bme.mit.train.sensor;
 
 import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
@@ -31,6 +31,10 @@ public class TrainSensorImpl implements TrainSensor {
 	public void overrideSpeedLimit(int speedLimit) {
 		this.speedLimit = speedLimit;
 		controller.setSpeedLimit(speedLimit);
+
+		if(speedLimit < 0 || speedLimit > 500) {user.setAlarmState(true);}
+
+		if(controller.getReferenceSpeed() / 2 > speedLimit){user.setAlarmState(true);} 
 	}
 
 	@Override
@@ -44,4 +48,6 @@ public class TrainSensorImpl implements TrainSensor {
 		
 		return tachograph;
 	}
+
+
 }
