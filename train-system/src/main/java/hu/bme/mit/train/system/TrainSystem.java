@@ -15,7 +15,7 @@ public class TrainSystem {
 
 	public TrainSystem(){
 		Thread th = new Thread(run());
-		
+		th.start(); 
 	}	
 	public TrainController getController() {
 		return controller;
@@ -29,7 +29,7 @@ public class TrainSystem {
 		return user;
 	}
 	public void run(){
-		followSpeed();
-		sleep(100);
+		controller.followSpeed();
+		Thread.sleep(100);
 	};
 }
